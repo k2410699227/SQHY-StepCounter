@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/ASproject/FirstBiteOfUI/app/src/main/res/drawable/action_bar.xml" value="0.1235" />
+        <entry key="..\:/ASproject/FirstBiteOfUI/app/src/main/res/layout/activity_installed_app.xml" value="0.25364583333333335" />
         <entry key="..\:/ASproject/FirstBiteOfUI/app/src/main/res/layout/activity_main.xml" value="0.25364583333333335" />
+        <entry key="..\:/ASproject/FirstBiteOfUI/app/src/main/res/layout/item_view.xml" value="0.25364583333333335" />
         <entry key="..\:/ASproject/FirstBiteOfUI/app/src/main/res/layout/sample_speed_display.xml" value="0.2390625" />
       </map>
     </option>

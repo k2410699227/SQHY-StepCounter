@@ -4,11 +4,15 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/run"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FirstBiteOfUI">
+        <activity
+            android:name=".InstalledAPP"
+            android:parentActivityName=".MainActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

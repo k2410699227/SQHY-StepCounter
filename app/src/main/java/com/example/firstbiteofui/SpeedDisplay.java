@@ -16,7 +16,7 @@ import android.view.View;
 
 public class SpeedDisplay extends View {
     int step=0;
-    float speed = 10;
+    float speed = 0;
 
     public SpeedDisplay(Context context) {
         super(context);
@@ -62,11 +62,12 @@ public class SpeedDisplay extends View {
         paint.setStrokeWidth(50);
         canvas.drawArc(centerX-RAIDUS,centerY-RAIDUS,centerX+RAIDUS,centerY+RAIDUS,130,280,false,paint);
 
-        paint.setColor(R.color.pink);
-        canvas.drawArc(centerX-RAIDUS,centerY-RAIDUS,centerX+RAIDUS,centerY+RAIDUS,50-280*speed/20,280*speed/20,false,paint);
+        //paint = new Paint();
+        paint.setColor(R.color.white);
+        canvas.drawArc(centerX-RAIDUS,centerY-RAIDUS,centerX+RAIDUS,centerY+RAIDUS,50-280*speed/20,(280*speed/20)%280,false,paint);
 
         paint = new Paint();
-        paint.setColor(R.color.pink);
+        paint.setColor(R.color.light_blue_400);
         paint.setTextSize(70);
         canvas.drawText("当前步数为",centerX-180,centerY-150,paint);
 

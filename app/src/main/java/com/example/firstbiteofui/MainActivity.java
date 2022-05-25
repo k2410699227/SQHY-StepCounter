@@ -1,9 +1,14 @@
 package com.example.firstbiteofui;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -15,6 +20,8 @@ import android.widget.Button;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
     private SpeedDisplay stepView;
     private SensorManager sensorManager;
@@ -24,10 +31,13 @@ public class MainActivity extends AppCompatActivity {
     private int stepNum=0;
 
 
+
+    @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Intent intent = new Intent(this,InstalledAPP.class);
         stepView = findViewById(R.id.speedDisplay);
         button = findViewById(R.id.button);
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -35,6 +45,15 @@ public class MainActivity extends AppCompatActivity {
         mySensorEventListener = new MySensorEventListener();
         sensorManager.registerListener(mySensorEventListener, sensor, sensorManager.SENSOR_DELAY_UI);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("自定义计步器视图");
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -45,9 +64,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void modifyStep(int step) {
+        stepView.speed = step+1;
         Animator animator = ObjectAnimator.ofInt(stepView, "step", step, step+1);
         animator.setDuration(50);
         animator.start();
+
 //        stepView.step=step+1;
 //        stepView.invalidate();
 //        stepView.postInvalidate();
@@ -89,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                         original_value=current_value;
                         modifyStep(stepNum);
                         stepNum++;
-                        //Snackbar.make(button,"加一步", Snackbar.LENGTH_LONG).show();
+
                         motionState=true;
                     }
                 }
